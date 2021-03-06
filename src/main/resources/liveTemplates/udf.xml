@@ -1,0 +1,15 @@
+<templateSet group="udf">
+  <template name="udf" value="import 'package:flutter/material.dart';&#10;import 'package:flutter/widgets.dart';&#10;import 'package:udf/message.dart';&#10;import 'package:udf/model.dart';&#10;import 'package:udf/stateProvider.dart';&#10;&#10;class $NAME$ extends StatelessWidget {&#10;  static const routeName = &quot;$NAME$Route&quot;;&#10;&#10;  @override&#10;  Widget build(BuildContext context) {&#10;    return ViewNotifier&lt;$NAME$ModelProvider&gt;(&#10;      StateProvider.providerOf($NAME$ModelProvider),&#10;      $NAME$View(),&#10;    );&#10;  }&#10;}&#10;&#10;class $NAME$ModelProvider extends StateProvider&lt;$NAME$Model&gt; {&#10;  $NAME$ModelProvider() : super($NAME$Model.init());&#10;&#10;  static send(Message&lt;$NAME$Model&gt; msg) =&gt; StateProvider.send&lt;$NAME$Model, $NAME$ModelProvider&gt;(msg);&#10;&#10;  static navigate() =&gt; StateProvider.navigateTo&lt;$NAME$ModelProvider&gt;($NAME$.routeName);&#10;}&#10;&#10;class $NAME$Model extends Model&lt;$NAME$Model&gt; {&#10;  final String myString;&#10;&#10;  $NAME$Model._(this.myString);&#10;&#10;  factory $NAME$Model.init() {&#10;    return $NAME$Model._(&quot;&quot;);&#10;  }&#10;&#10;  @override&#10;  $NAME$Model copyWith({String? myString}) {&#10;    return $NAME$Model._(myString ?? this.myString);&#10;  }&#10;}&#10;&#10;class $NAME$View extends StatelessWidget {&#10;  @override&#10;  Widget build(BuildContext context) {&#10;    $NAME$Model model = ViewNotifier.model&lt;$NAME$Model, $NAME$ModelProvider&gt;(context);&#10;    return Scaffold(&#10;      appBar: AppBar(title: Text(model.myString)),&#10;      body: Center(&#10;        child: Column(&#10;          mainAxisAlignment: MainAxisAlignment.center,&#10;          children: [Text(model.myString)],&#10;        ),&#10;      ),&#10;    );&#10;  }&#10;}" description="set up the boilerplate for a UDF page." toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="DART" value="true" />
+    </context>
+  </template>
+  <template name="msg" value="class $NAME$ extends Message&lt;$MODEL$&gt; {&#10;  &#10;  @override&#10;  handle($MODEL$ model) {&#10;    // TODO: implement handle&#10;    throw UnimplementedError();&#10;    return model.copyWith();&#10;  }&#10;}" description="A message for UDF" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODEL" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="DART" value="true" />
+    </context>
+  </template>
+</templateSet>

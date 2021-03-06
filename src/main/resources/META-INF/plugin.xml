@@ -7,13 +7,9 @@
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
 
+
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.koenusz.udfintellijplugin.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.koenusz.udfintellijplugin.services.MyProjectService"/>
+        <defaultLiveTemplates file="/liveTemplates/udf.xml"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.koenusz.udfintellijplugin.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
 </idea-plugin>
