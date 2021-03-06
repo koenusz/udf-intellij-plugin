@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.koenusz.udfintellijplugin.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.koenusz.udfintellijplugin.MyBundle
 
 class MyApplicationService {
 
